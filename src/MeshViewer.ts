@@ -72,6 +72,7 @@ export class MeshViewer extends gfx.GfxApp
 
         const vertices: number[] = [];
         const indices: number[] = [];
+        const normals: number[] = [];
 
         // Initialize variables for the cylinder circumference
         const angleIncrement = (Math.PI * 2) / numSegments;
@@ -83,6 +84,9 @@ export class MeshViewer extends gfx.GfxApp
 
             vertices.push(Math.cos(angle), height/2, Math.sin(angle));
             vertices.push(Math.cos(angle), -height/2, Math.sin(angle));
+
+            normals.push(Math.cos(angle), 0, Math.sin(angle));
+            normals.push(Math.cos(angle), 0, Math.sin(angle));
         }
 
         for(let i=0; i < numSegments; i++)
@@ -94,6 +98,7 @@ export class MeshViewer extends gfx.GfxApp
         }
 
         cylinder.setVertices(vertices);
+        cylinder.setNormals(normals);
         cylinder.setIndices(indices);
         cylinder.createDefaultVertexColors();
 
