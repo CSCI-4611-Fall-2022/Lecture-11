@@ -88,7 +88,14 @@ export class MeshViewer extends gfx.GfxApp
         for(let i=0; i < numSegments; i++)
         {
             const angle = i * angleIncrement;
+
+            indices.push(i*2, i*2+2, i*2+1);
+            indices.push(i*2+1, i*2+2, i*2+3);
         }
+
+        cylinder.setVertices(vertices);
+        cylinder.setIndices(indices);
+        cylinder.createDefaultVertexColors();
 
         return cylinder;
     }
