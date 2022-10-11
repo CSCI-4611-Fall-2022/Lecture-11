@@ -70,7 +70,25 @@ export class MeshViewer extends gfx.GfxApp
     {
         const cylinder = new gfx.Mesh();
 
-        // TO DO
+        const vertices: number[] = [];
+        const indices: number[] = [];
+
+        // Initialize variables for the cylinder circumference
+        const angleIncrement = (Math.PI * 2) / numSegments;
+        const numVerticesX = numSegments + 1;
+
+        for(let i=0; i < numVerticesX; i++)
+        {
+            const angle = i * angleIncrement;
+
+            vertices.push(Math.cos(angle), height/2, Math.sin(angle));
+            vertices.push(Math.cos(angle), -height/2, Math.sin(angle));
+        }
+
+        for(let i=0; i < numSegments; i++)
+        {
+            const angle = i * angleIncrement;
+        }
 
         return cylinder;
     }
